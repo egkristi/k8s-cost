@@ -1,6 +1,5 @@
 # k8s-cost
-Kubernetes Cost Monitoring &amp; Optimization
-# 🔍 KubeCost Alternative – Kubernetes Cost Monitoring & Optimization
+# 🔍 Kubernetes Cost Monitoring & Optimization
 
 A flexible, open-source solution for tracking and optimizing Kubernetes costs across cloud, hybrid, and on-prem environments. Built with Prometheus, Python, and optional UIs like Streamlit or Grafana.
 
