@@ -41,7 +41,74 @@ flowchart TD
     Prometheus -->|Metrics| PythonEngine
     Pricing --> PythonEngine
     PythonEngine --> Dev
+```
 
+```mermaid
+flowchart TD
+    subgraph Kubernetes Cluster
+        Prometheus["📊 Prometheus"]
+        KSM["📦 kube-state-metrics"]
+        NodeExporter["🖥️ node-exporter"]
+        CostEngine["🧮 Python Cost Engine"]
+        Streamlit["📊 Streamlit App"]
+        Grafana["📈 Grafana (Optional)"]
+        Timescale["🗃️ TimescaleDB (Optional)"]
+    end
+
+    Pricing["💲 Static or Cloud Pricing"]
+    User["👩‍💻 User / Ops"]
+
+    Prometheus --> CostEngine
+    KSM --> Prometheus
+    NodeExporter --> Prometheus
+    Pricing --> CostEngine
+    CostEngine --> Streamlit
+    CostEngine --> Timescale
+    Timescale --> Grafana
+    Streamlit --> User
+    Grafana --> User
+```
+
+### Full Cloud-Aware & Multi-Cluster Architecture
+
+```mermaid
+flowchart TB
+    subgraph ClusterA["Kubernetes Cluster A"]
+        PrometheusA["📊 Prometheus A"]
+        CostEngineA["🧮 Cost Engine A"]
+        KSM_A["kube-state-metrics"]
+    end
+
+    subgraph ClusterB["Kubernetes Cluster B"]
+        PrometheusB["📊 Prometheus B"]
+        CostEngineB["🧮 Cost Engine B"]
+        KSM_B["kube-state-metrics"]
+    end
+
+    CloudPricing["☁️ Cloud Billing API"]
+    StaticPricing["💲 Static Pricing Config"]
+    CentralDB["🗃️ Central TimescaleDB"]
+    Grafana["📈 Grafana Dashboard"]
+    Slack["🔔 Alerts / Reports"]
+    Admin["👤 Admin / Ops"]
+
+    PrometheusA --> CostEngineA
+    PrometheusB --> CostEngineB
+    KSM_A --> PrometheusA
+    KSM_B --> PrometheusB
+
+    CloudPricing --> CostEngineA
+    CloudPricing --> CostEngineB
+    StaticPricing --> CostEngineA
+    StaticPricing --> CostEngineB
+
+    CostEngineA --> CentralDB
+    CostEngineB --> CentralDB
+    CentralDB --> Grafana
+    Grafana --> Admin
+    CostEngineA --> Slack
+    CostEngineB --> Slack
+```
 ---
 
 ## 🚀 Development Roadmap
