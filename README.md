@@ -28,6 +28,8 @@ This project aims to create a **transparent, customizable, and vendor-agnostic a
 ---
 ## Architecture
 
+### MVP phase solution
+
 ```mermaid
 flowchart TD
     subgraph Kubernetes Cluster
@@ -42,6 +44,8 @@ flowchart TD
     Pricing --> PythonEngine
     PythonEngine --> Dev
 ```
+
+### Single Cluster Architecture
 
 ```mermaid
 flowchart TD
