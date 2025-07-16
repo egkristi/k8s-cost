@@ -223,6 +223,35 @@ pricing:
     cpu_per_hour: 0.021
     memory_per_hour: 0.0031
 
+---
+
+## 🧪 Testing & Validation
+
+To ensure cost calculations and integrations behave as expected:
+
+1. Run local tests:
+```bash
+pytest tests/
+```
+
+Validate Prometheus integration:
+```bash
+python scripts/cost_calculator.py --prometheus-url=http://localhost:9090
+
+---
+
+## 🔄 Versioning & Releases
+
+This project follows [Semantic Versioning (SemVer)](https://semver.org/).
+
+- **MAJOR**: Breaking changes
+- **MINOR**: New features, backward compatible
+- **PATCH**: Bug fixes and minor improvements
+
+Releases are tagged in GitHub and published under [Releases](https://github.com/egkristi/k8s-cost/releases).
+
+---
+
 ## 🔒 Security & Privacy
 
 This solution is designed for self-hosted use and **does not transmit any data externally** by default. All cost attribution logic and metric scraping happens within your cluster.
